@@ -8,15 +8,18 @@ public class IMFTri : MonoBehaviour
     public bool _IMFTrigger=false;
     private void OnTriggerEnter(Collider other)
     {
-        _IMFTrigger = true;
-        Debug.Log("트리거 실행");
-        if (_IMFTrigger)
+        if (other.CompareTag("PC"))
         {
-            Debug.Log("오브젝트 활성화");
-            foreach(GameObject Car in VertCars)
+            _IMFTrigger = true;
+            Debug.Log("트리거 실행");
+            if (_IMFTrigger)
             {
-                Car.SetActive(true);
-            }    
+                Debug.Log("오브젝트 활성화");
+                foreach (GameObject Car in VertCars)
+                {
+                    Car.SetActive(true);
+                }
+            }
         }
     }
 }

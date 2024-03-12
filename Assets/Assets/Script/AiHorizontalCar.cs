@@ -9,7 +9,7 @@ public class AiHorizontalCar : MonoBehaviour
     private void Update()
     {
         Move();
-        if ((transform.position.x >= 32) || (transform.position.x <= -63))
+        if ((transform.position.x <= -73)||(transform.position.x)>=53)
         {
             speed = -speed;
             transform.Rotate(0, rotate, 0);

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
  
 public class ST : MonoBehaviour
 {
@@ -22,6 +21,7 @@ public class ST : MonoBehaviour
         {
             Time.timeScale = 0;
             _store.SetActive(true);
+            this.gameObject.SetActive(false);
         }
     }
 }
