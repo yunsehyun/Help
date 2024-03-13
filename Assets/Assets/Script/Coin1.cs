@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin1 : MonoBehaviour
 {
+    public int coin;
     private void Awake()
     {
         if(Random.Range(0f, 1f)<0.5f)
@@ -13,9 +14,10 @@ public class Coin1 : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        CoinManager coinManager = FindAnyObjectByType<CoinManager>();
         if(other.CompareTag("PC"))
         {
-            // 100만원 추가
+            coinManager.AddCoins(coin);
             Destroy(this.gameObject);
         }
     }

@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerCarMove : MonoBehaviour
 {
-    public int maxSpeed = 23;
+    public TextMeshProUGUI speedText;
+    public int maxSpeed = 15;
     public int speed = 600;
     public enum Axel
     {
@@ -44,6 +46,7 @@ public class PlayerCarMove : MonoBehaviour
     {
         GetInput();
         AnimateWheels();
+        Displayspeed();
     }
 
     private void LateUpdate()
@@ -92,5 +95,10 @@ public class PlayerCarMove : MonoBehaviour
             wheel.wheelModel.transform.position = pos;
             wheel.wheelModel.transform.rotation = rot;
         }
+    }
+    void Displayspeed()
+    {
+        float currentSpeed = carRb.velocity.magnitude*3.6f;
+        speedText.text = "Speed: " + currentSpeed.ToString("F0") + " km/h"; // 소수점 이하 자리 없이 속도를 표시
     }
 }
