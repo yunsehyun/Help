@@ -491,8 +491,8 @@ MonoBehaviour:
   maxSpeed: 20
   speed: 300
   maxAccel: 30
-  turnSense: 0.6
-  maxSteerAngle: 25
+  turnSense: 0.5
+  maxSteerAngle: 23
   _centerOfMass: {x: 0, y: 0, z: 0}
   wheels:
   - wheelModel: {fileID: 3630769390892882695}

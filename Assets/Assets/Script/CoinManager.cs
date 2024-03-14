@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CoinManager : MonoBehaviour
 {
     public TextMeshProUGUI creditText;
-    private int credits;
+    public int credits;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class CoinManager : MonoBehaviour
         SaveCoins(); // 코인이 추가될 때마다 저장합니다.
     }
 
-    public void SubtractCoins(int amount)
+    public void MinusCoins(int amount)
     {
         credits -= amount;
         UpdateUI();
