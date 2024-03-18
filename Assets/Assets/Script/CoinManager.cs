@@ -8,9 +8,13 @@ public class CoinManager : MonoBehaviour
 {
     public TextMeshProUGUI creditText;
     public int credits;
+    public string wheel;
+    public string engine;
 
     private void Start()
     {
+        wheel = "기본바퀴";
+        engine = "4기통 엔진";
         LoadCoins(); // 게임 시작 시 저장된 코인 수를 불러옵니다.
         UpdateUI(); // UI에 현재 코인 수를 표시합니다.
     }
@@ -31,7 +35,7 @@ public class CoinManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        creditText.text = credits.ToString() + "원";
+        creditText.text = credits.ToString() + "원\n" + wheel.ToString() + "\n" + engine.ToString();
     }
 
     private void SaveCoins()
