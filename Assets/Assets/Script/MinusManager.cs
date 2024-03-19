@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MinusManager : MonoBehaviour
 {
+    static int Sonic;
     static public int minus;
     public GameObject _really;
     public bool[] wheel = new bool[3];

@@ -4,46 +4,46 @@ using UnityEngine;
 
 public class DirtRoad : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private int Tmaxspeed,Tspeed;
+    private void OnTriggerStay(Collider other)
     {
-        MinusManager wheel = FindAnyObjectByType<MinusManager>();
+        MinusManager wmanager = FindAnyObjectByType<MinusManager>();
         Smanager smanager = FindAnyObjectByType<Smanager>();
         PlayerCarMove playercarmove = FindAnyObjectByType<PlayerCarMove>();
+        Tmaxspeed = playercarmove.maxSpeed;
+        Tspeed=playercarmove.speed;
         if (other.CompareTag("PC"))
         {
             if (smanager._Stage[0])
             {
-                if (wheel.wheel[0])
-                {
-                    Debug.Log("아무일도 없었다.");
-                }
-                else
+                if (wmanager.wheel[0]==false)
                 {
                     playercarmove.maxSpeed -= 5;
+                    playercarmove.speed -= 50;
                 }
             }
             if (smanager._Stage[1])
             {
-                if (wheel.wheel[1])
-                {
-                    Debug.Log("아무일도 없었다.");
-                }
-                else
+                if (wmanager.wheel[1]==false)
                 {
                     playercarmove.maxSpeed -= 5;
+                    playercarmove.speed -= 50;
                 }
             }
             if (smanager._Stage[2])
             {
-                if (wheel.wheel[2])
-                {
-                    Debug.Log("아무일도 없었다.");
-                }
-                else
+                if (wmanager.wheel[2]==false)
                 {
                     playercarmove.maxSpeed -= 5;
+                    playercarmove.speed -= 50;
                 }
             }
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        PlayerCarMove playercarmove =FindAnyObjectByType<PlayerCarMove>();
+        playercarmove.maxSpeed = Tmaxspeed;
+        playercarmove.speed = Tspeed;
     }
 }

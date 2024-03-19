@@ -16,7 +16,11 @@ public class CoinManager : MonoBehaviour
         wheel = "기본바퀴";
         engine = "4기통 엔진";
         LoadCoins(); // 게임 시작 시 저장된 코인 수를 불러옵니다.
-        UpdateUI(); // UI에 현재 코인 수를 표시합니다.
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateUI();
     }
 
     public void AddCoins(int amount)
