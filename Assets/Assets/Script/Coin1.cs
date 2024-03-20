@@ -12,13 +12,19 @@ public class Coin1 : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+
+    private void FixedUpdate()
+    {
+        transform.rotation *= Quaternion.Euler(0f, 1f, 0f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         CoinManager coinManager = FindAnyObjectByType<CoinManager>();
         if(other.CompareTag("PC"))
         {
             coinManager.AddCoins(coin);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

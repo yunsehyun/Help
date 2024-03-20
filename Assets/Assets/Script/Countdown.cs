@@ -9,7 +9,7 @@ public class Countdown : MonoBehaviour
     public Image _count;
     public float secondtime; // 초 단위로 시간 설정
 
-    private float TotalTime; // 총 시간 (초 단위)
+    public float TotalTime; // 총 시간 (초 단위)
 
     private void Start()
     {

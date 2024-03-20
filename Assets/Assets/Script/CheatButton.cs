@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CheatButton : MonoBehaviour
 {
     public List<GameObject> _buttons = new List<GameObject>();
+    public GameObject _store;
 
     private void Start()
     {
@@ -66,6 +67,19 @@ public class CheatButton : MonoBehaviour
                 coinmanager.engine = "8기통 엔진";
                 playercarmove.speed = 600;
                 playercarmove.maxSpeed = 30;
+                break;
+            case 6:
+                coinmanager.AddCoins(1000000);
+                break;
+            case 7:
+                coinmanager.AddCoins(5000000);
+                break;
+            case 8:
+                coinmanager.AddCoins(10000000);
+                break;
+            case 9:
+                Time.timeScale = 0;
+                _store.SetActive(true);
                 break;
             default:
                 break;
