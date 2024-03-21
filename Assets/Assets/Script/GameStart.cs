@@ -8,7 +8,7 @@ public class GameStart : MonoBehaviour
     public GameObject _start;
     public GameObject _startimage;
     public float cnt = 5.5f;
-    private void Awake()
+    private void Start()
     {
         _start.SetActive(false);
     }
