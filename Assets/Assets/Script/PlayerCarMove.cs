@@ -22,7 +22,7 @@ public class PlayerCarMove : MonoBehaviour
         public WheelCollider wheelCollider;
         public Axel axel;
     }
-    public float maxAccel = 30.0f;
+    public int maxAccel = 30;
 
     public float turnSense = 1.0f;
     public float maxSteerAngle = 30.0f;

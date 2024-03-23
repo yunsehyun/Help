@@ -7,6 +7,10 @@ public class CheatButton : MonoBehaviour
 {
     public List<GameObject> _buttons = new List<GameObject>();
     public GameObject _store;
+    private int[] temp= new int[2];
+    CoinManager coinmanager;
+    MinusManager allwheel;
+    PlayerCarMove playercarmove;
 
     private void Start()
     {
@@ -26,9 +30,9 @@ public class CheatButton : MonoBehaviour
 
     public void ButtonClick(GameObject buttonClicked)
     {
-        CoinManager coinmanager = FindAnyObjectByType<CoinManager>();
-        MinusManager allwheel = FindAnyObjectByType<MinusManager>();
-        PlayerCarMove playercarmove = FindAnyObjectByType<PlayerCarMove>();
+        coinmanager = FindAnyObjectByType<CoinManager>();
+        allwheel = FindAnyObjectByType<MinusManager>();
+        playercarmove = FindAnyObjectByType<PlayerCarMove>();
 
         int index = _buttons.IndexOf(buttonClicked); // 클릭된 버튼의 인덱스 확인
 
@@ -81,8 +85,29 @@ public class CheatButton : MonoBehaviour
                 Time.timeScale = 0;
                 _store.SetActive(true);
                 break;
+            case 10:
+                Time.timeScale = 0;
+                temp[0] = playercarmove.speed;
+                temp[1] = playercarmove.maxAccel;
+                playercarmove.speed += 500;
+                playercarmove.maxAccel += 50;
+                Invoke("Swap", 2f);
+                break;
+            case 11:
+                Time.timeScale = 0;
+                temp[0] = playercarmove.speed;
+                temp[1] = playercarmove.maxAccel;
+                playercarmove.speed += 1000;
+                playercarmove.maxAccel += 100;
+                Invoke("Swap", 2f);
+                break;
             default:
                 break;
         }
+    }
+    private void Swap()
+    {
+        playercarmove.speed = temp[0];
+        playercarmove.maxAccel = temp[1];
     }
 }
