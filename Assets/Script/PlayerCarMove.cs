@@ -40,7 +40,6 @@ public class PlayerCarMove : MonoBehaviour
     {
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = _centerOfMass;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()

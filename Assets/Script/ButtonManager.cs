@@ -12,4 +12,9 @@ public class ButtonManager : MonoBehaviour
         _store.SetActive(false);
         _time.SetActive(true);
     }
+    public void Road()
+    {
+        Time.timeScale = 0;
+        _store.SetActive(true);
+    }
 }

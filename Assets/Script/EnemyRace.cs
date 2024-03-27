@@ -12,7 +12,8 @@ public class EnemyRace : MonoBehaviour
 
     private void Start()
     {
-        canvas[0].SetActive(false);
+        for(int i=0;i<2;i++)
+            canvas[i].SetActive(false);
         coinmanager = FindAnyObjectByType<CoinManager>();
     }
 
@@ -21,13 +22,14 @@ public class EnemyRace : MonoBehaviour
         if(other.CompareTag("PC"))
         {
             Debug.Log("½Â¸®");
-            canvas[1].SetActive(true);
+            canvas[0].SetActive(true);
             coinmanager.AddCoins(5000000);
+            Time.timeScale = 0;
         }
         else if(other.CompareTag("Enemy"))
         {
             Time.timeScale = 0;
-            canvas[2].SetActive(true);
+            canvas[1].SetActive(true);
             Debug.Log("ÆÐ¹è");
         }
     }

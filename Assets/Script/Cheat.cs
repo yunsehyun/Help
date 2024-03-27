@@ -49,6 +49,10 @@ public class Cheat : MonoBehaviour
         {
             cheatF5();
         }
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            Home();
+        }
     }
     void cheatF1()
     {
@@ -104,6 +108,10 @@ public class Cheat : MonoBehaviour
             _Stop.SetActive(false);
             Time.timeScale = 1;
         }
+    }
+    void Home()
+    {
+        Time.timeScale += 1;
     }
     void Live()
     {

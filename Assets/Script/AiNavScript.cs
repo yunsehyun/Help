@@ -6,12 +6,13 @@ using UnityEngine.AI;
 
 public class AiNavScript : MonoBehaviour
 {
-    public Transform _here;
+    public List<Transform> _here= new List<Transform>();
     public NavMeshAgent _agent;
     public List<Wheel> wheels;
     public GameObject _start;
     public Transform target;
     public float distance;
+    public float distance2;
     public List<int> _accel;
     public List<int> _speed;
 
@@ -29,12 +30,14 @@ public class AiNavScript : MonoBehaviour
 
     private void Move()
     {
-        _agent.destination = _here.position;
+        _agent.destination = _here[0].position;
     }
 
     private void FixedUpdate()
     {
         distance = Vector3.Distance(transform.position, target.position);
+        distance2 = Vector3.Distance(transform.position, _here[0].position);
+        if (distance2 < 20) _agent.destination = _here[1].position;
         //Debug.Log(distance.ToString());
         if (distance >= 76)
         {
