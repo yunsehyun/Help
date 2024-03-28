@@ -7,7 +7,7 @@ public class CheatButton : MonoBehaviour
 {
     public List<GameObject> _buttons = new List<GameObject>();
     public GameObject _store;
-    private int[] temp= new int[2];
+    private int[] temp= new int[3];
     CoinManager coinmanager;
     MinusManager allwheel;
     PlayerCarMove playercarmove;
@@ -89,16 +89,20 @@ public class CheatButton : MonoBehaviour
                 Time.timeScale = 0;
                 temp[0] = playercarmove.speed;
                 temp[1] = playercarmove.maxAccel;
+                temp[2] = playercarmove.maxSpeed;
                 playercarmove.speed += 500;
                 playercarmove.maxAccel += 50;
+                playercarmove.maxSpeed += 50;
                 Invoke("Swap", 2f);
                 break;
             case 11:
                 Time.timeScale = 0;
                 temp[0] = playercarmove.speed;
                 temp[1] = playercarmove.maxAccel;
+                temp[2] = playercarmove.maxSpeed;
                 playercarmove.speed += 1000;
                 playercarmove.maxAccel += 100;
+                playercarmove.maxSpeed += 100;
                 Invoke("Swap", 2f);
                 break;
             default:
@@ -109,5 +113,6 @@ public class CheatButton : MonoBehaviour
     {
         playercarmove.speed = temp[0];
         playercarmove.maxAccel = temp[1];
+        playercarmove.maxSpeed = temp[2];
     }
 }

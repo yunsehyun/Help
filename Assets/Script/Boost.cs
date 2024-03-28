@@ -6,7 +6,7 @@ public class Boost : MonoBehaviour
 {
     PlayerCarMove playercarmove;
     public List<int> _speed = new List<int>();
-    private int[] temp=new int[2];
+    private int[] temp=new int[3];
 
     public void Awake()
     {
@@ -33,8 +33,10 @@ public class Boost : MonoBehaviour
 
             temp[0] = playercarmove.speed;
             temp[1] = playercarmove.maxAccel;
+            temp[2] = playercarmove.maxSpeed;
             playercarmove.speed += _speed[0];
             playercarmove.maxAccel += _speed[1];
+            playercarmove.maxSpeed += _speed[2];
             Invoke("Swap", 2f);
             this.gameObject.SetActive(false);
         }
@@ -44,5 +46,6 @@ public class Boost : MonoBehaviour
     {
         playercarmove.speed = temp[0];
         playercarmove.maxAccel = temp[1];
+        playercarmove.maxSpeed = temp[2];
     }
 }

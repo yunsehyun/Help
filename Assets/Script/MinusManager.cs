@@ -8,7 +8,7 @@ public class MinusManager : MonoBehaviour
     static public int minus;
     public GameObject _really;
     public bool[] wheel = new bool[3];
-
+    public bool[] engine = new bool[2];
 
     public void Minus()
     {
@@ -47,19 +47,22 @@ public class MinusManager : MonoBehaviour
                 wheel[0] = true;
                 wheel[1] = true;
                 wheel[2] = true;
-                DontDestroyOnLoad(this);
             }
             if(minus==10000000)
             {
+                engine[0] = true;
                 coinManager.engine = "6기통 엔진";
-                playercarmove .speed = 400;
+                playercarmove.speed = 400;
                 playercarmove.maxSpeed = 25;
+                playercarmove.maxAccel = 35;
             }
             else if(minus==15000000)
             {
+                engine[1]= true;
                 coinManager.engine = "8기통 엔진";
-                playercarmove .speed = 600;
-                playercarmove .maxSpeed = 30;
+                playercarmove.speed = 600;
+                playercarmove.maxSpeed = 30;
+                playercarmove.maxAccel = 40;
             }
             coinManager.MinusCoins(minus);
             _really.SetActive(false);

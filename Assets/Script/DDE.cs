@@ -6,6 +6,10 @@ public class DDE : MonoBehaviour
 {
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        var obj = FindObjectsOfType<DDE>();
+        if(obj.Length==1)
+            DontDestroyOnLoad(this.gameObject);
+        else
+            Destroy(this.gameObject);
     }
 }

@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.AI;
-using Unity.VisualScripting;
 
 public class Cheat : MonoBehaviour
 {
@@ -17,7 +14,7 @@ public class Cheat : MonoBehaviour
     public GameObject _Stop;
     public List<GameObject> _items= new List<GameObject>();
     public GameObject ainavmesh;
-    public string _scene;
+    Smanager _smanager;
     int cnt=0;
     Countdown _count;
 
@@ -25,6 +22,7 @@ public class Cheat : MonoBehaviour
     {
        _count = FindAnyObjectByType<Countdown>();
         ainavmesh = GetComponent<GameObject>();
+        _smanager= FindAnyObjectByType<Smanager>();
     }
 
     private void Update()
@@ -68,31 +66,55 @@ public class Cheat : MonoBehaviour
     }
     void cheatF3()
     {
-        GameStart gamestart = FindAnyObjectByType<GameStart>();
-        gamestart.cnt = 5.5f;
-        _GameStart[0].SetActive(true);
-        _GameStart[1].SetActive(false);
-        Debug.Log("치트 F3번 작동함");
-        car[0].transform.position = CheatPOS[0].position;
-        car[1].transform.position = CheatPOS[1].position;
-        _count.TotalTime = _count.secondtime*60;
-        ainavmesh.SetActive(false);
-        Invoke("Live", 5.5f);
-        foreach(var item in _items)
+        //GameStart gamestart = FindAnyObjectByType<GameStart>();
+        //gamestart.cnt = 5.5f;
+        //_GameStart[0].SetActive(true);
+        //_GameStart[1].SetActive(false);
+        //Debug.Log("치트 F3번 작동함");
+        //car[0].transform.position = CheatPOS[0].position;
+        //car[1].transform.position = CheatPOS[1].position;
+        //_count.TotalTime = _count.secondtime*60;
+        //ainavmesh.SetActive(false);
+        //Invoke("Live", 5.5f);
+        //foreach(var item in _items)
+        //{
+        //    if (Random.Range(0, 1f) < 0.5f)
+        //    {
+        //        item.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        item.SetActive(false);
+        //    }
+        //}
+        if (_smanager._Stage[0])
         {
-            if (Random.Range(0, 1f) < 0.5f)
-            {
-                item.SetActive(true);
-            }
-            else
-            {
-                item.SetActive(false);
-            }
+            SceneManager.LoadScene("Desert");
+        }
+        if (_smanager._Stage[1])
+        {
+            SceneManager.LoadScene("Mountain");
+        }
+        if (_smanager._Stage[2])
+        {
+            SceneManager.LoadScene("City");
         }
     }
     void cheatF4()
     {
         Debug.Log("치트 F4번 작동함");
+        if (_smanager._Stage[0])
+        {
+            SceneManager.LoadScene("Mountain");
+        }
+        if (_smanager._Stage[1])
+        {
+            SceneManager.LoadScene("City");
+        }
+        if (_smanager._Stage[2])
+        {
+            SceneManager.LoadScene("Ending");
+        }
     }
     void cheatF5()
     {
@@ -113,8 +135,8 @@ public class Cheat : MonoBehaviour
     {
         Time.timeScale += 1;
     }
-    void Live()
-    {
-        ainavmesh.SetActive(true);
-    }
+    //void Live()
+    //{
+    //    ainavmesh.SetActive(true);
+    //}
 }

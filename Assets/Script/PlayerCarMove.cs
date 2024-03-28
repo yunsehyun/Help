@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class PlayerCarMove : MonoBehaviour
     public TextMeshProUGUI speedText;
     public int maxSpeed = 15;
     public int speed = 600;
+    MinusManager _engine;
     public enum Axel
     {
         Front,
@@ -40,6 +42,19 @@ public class PlayerCarMove : MonoBehaviour
     {
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = _centerOfMass;
+        _engine = FindAnyObjectByType<MinusManager>();
+        if (_engine.engine[0])
+        {
+            speed = 400;
+            maxSpeed = 25;
+            maxAccel = 35;
+        }
+        if (_engine.engine[1])
+        {
+            speed = 600;
+            maxSpeed = 30;
+            maxAccel = 40;
+        }
     }
 
     private void Update()

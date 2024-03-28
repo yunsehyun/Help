@@ -8,13 +8,13 @@ public class EnemyRace : MonoBehaviour
     public List<GameObject> Cars = new List<GameObject>();
     public List<GameObject> canvas = new List<GameObject>();
     CoinManager coinmanager;
+    PlayerCarMove playercarmove;
     public string _scene;
 
     private void Start()
     {
-        for(int i=0;i<2;i++)
-            canvas[i].SetActive(false);
         coinmanager = FindAnyObjectByType<CoinManager>();
+        playercarmove=FindAnyObjectByType<PlayerCarMove>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,7 +40,7 @@ public class EnemyRace : MonoBehaviour
     }
     public void Win()
     {
-
+        Time.timeScale = 1;
         SceneManager.LoadScene(_scene);
     }
 }

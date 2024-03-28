@@ -10,7 +10,7 @@ public class Smanager : MonoBehaviour
     {
         string Sbool= SceneManager.GetActiveScene().name;
         Debug.Log(Sbool.ToString());
-        if( Sbool =="Desert")
+        if( Sbool == "Desert")
         {
             _Stage[0] = true;
         }
