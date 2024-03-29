@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,8 +13,12 @@ public class Cheat : MonoBehaviour
     public GameObject _cheaetStore;
     public GameObject _time;
     public GameObject _Stop;
+    public int dollar;
+    public bool[] __engine = new bool[2];
     public List<GameObject> _items= new List<GameObject>();
     public GameObject ainavmesh;
+    MinusManager minusmanager;
+    CoinManager coin;
     Smanager _smanager;
     int cnt=0;
     Countdown _count;
@@ -23,6 +28,13 @@ public class Cheat : MonoBehaviour
        _count = FindAnyObjectByType<Countdown>();
         ainavmesh = GetComponent<GameObject>();
         _smanager= FindAnyObjectByType<Smanager>();
+        minusmanager = FindAnyObjectByType<MinusManager>();
+        coin = FindAnyObjectByType<CoinManager>();
+        dollar = coin.credits;
+        if (minusmanager.engine[0])
+            __engine[0] = true;
+        if (minusmanager.engine[1])
+            __engine[1] = true;
     }
 
     private void Update()
@@ -66,37 +78,27 @@ public class Cheat : MonoBehaviour
     }
     void cheatF3()
     {
-        //GameStart gamestart = FindAnyObjectByType<GameStart>();
-        //gamestart.cnt = 5.5f;
-        //_GameStart[0].SetActive(true);
-        //_GameStart[1].SetActive(false);
-        //Debug.Log("치트 F3번 작동함");
-        //car[0].transform.position = CheatPOS[0].position;
-        //car[1].transform.position = CheatPOS[1].position;
-        //_count.TotalTime = _count.secondtime*60;
-        //ainavmesh.SetActive(false);
-        //Invoke("Live", 5.5f);
-        //foreach(var item in _items)
-        //{
-        //    if (Random.Range(0, 1f) < 0.5f)
-        //    {
-        //        item.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        item.SetActive(false);
-        //    }
-        //}
         if (_smanager._Stage[0])
         {
-            SceneManager.LoadScene("Desert");
+            coin.credits = dollar;
+            if (__engine[0])
+            {
+                minusmanager.engine[0] = true;
+            }
+            else if (__engine[1])
+            {
+                minusmanager.engine[1] = true;
+            }
+                SceneManager.LoadScene("Desert");
         }
         if (_smanager._Stage[1])
         {
+            coin.credits = dollar;
             SceneManager.LoadScene("Mountain");
         }
         if (_smanager._Stage[2])
         {
+            coin.credits = dollar;
             SceneManager.LoadScene("City");
         }
     }

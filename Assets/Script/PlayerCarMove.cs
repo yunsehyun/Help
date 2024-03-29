@@ -2,16 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerCarMove : MonoBehaviour
 {
     public TextMeshProUGUI speedText;
     public int maxSpeed = 15;
     public int speed = 600;
+    private float currentSpeed;
     MinusManager _engine;
+    AiNavScript ainav;
     public enum Axel
     {
         Front,
@@ -43,17 +43,27 @@ public class PlayerCarMove : MonoBehaviour
         carRb = GetComponent<Rigidbody>();
         carRb.centerOfMass = _centerOfMass;
         _engine = FindAnyObjectByType<MinusManager>();
+        ainav = FindAnyObjectByType<AiNavScript>();
+    }
+    private void Start()
+    {
         if (_engine.engine[0])
         {
             speed = 400;
             maxSpeed = 25;
             maxAccel = 35;
         }
-        if (_engine.engine[1])
+        else if (_engine.engine[1])
         {
             speed = 600;
             maxSpeed = 30;
             maxAccel = 40;
+        }
+        else
+        {
+            speed = 300;
+            maxSpeed = 20;
+            maxAccel = 30;
         }
     }
 
@@ -62,6 +72,7 @@ public class PlayerCarMove : MonoBehaviour
         GetInput();
         AnimateWheels();
         Displayspeed();
+        wheelmass();
     }
 
     private void LateUpdate()
@@ -74,6 +85,17 @@ public class PlayerCarMove : MonoBehaviour
     {
         moveInput = Input.GetAxis("Vertical");
         steerInput = Input.GetAxis("Horizontal");
+    }
+
+    void wheelmass()
+    {
+        foreach (var wheel in wheels)
+        {
+            if (currentSpeed <= 20)
+                wheel.wheelCollider.mass = 20;
+            else if (currentSpeed >= 60)
+                wheel.wheelCollider.mass = 80;
+        }
     }
 
     void Move()
@@ -113,7 +135,7 @@ public class PlayerCarMove : MonoBehaviour
     }
     void Displayspeed()
     {
-        float currentSpeed = carRb.velocity.magnitude*3.6f;
+        currentSpeed = carRb.velocity.magnitude*3.6f;
         speedText.text = "Speed: " + currentSpeed.ToString("F0") + " km/h"; // 소수점 이하 자리 없이 속도를 표시
     }
 }

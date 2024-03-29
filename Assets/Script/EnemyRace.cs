@@ -10,6 +10,7 @@ public class EnemyRace : MonoBehaviour
     CoinManager coinmanager;
     PlayerCarMove playercarmove;
     public string _scene;
+    public int money;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class EnemyRace : MonoBehaviour
         {
             Debug.Log("½Â¸®");
             canvas[0].SetActive(true);
-            coinmanager.AddCoins(5000000);
+            coinmanager.AddCoins(money);
             Time.timeScale = 0;
         }
         else if(other.CompareTag("Enemy"))

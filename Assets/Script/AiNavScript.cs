@@ -15,6 +15,7 @@ public class AiNavScript : MonoBehaviour
     public float distance2;
     public List<int> _accel;
     public List<int> _speed;
+    MinusManager minusmanager;
 
     [Serializable]
     public struct Wheel
@@ -24,6 +25,7 @@ public class AiNavScript : MonoBehaviour
     
     private void Awake()
     {
+        minusmanager = FindAnyObjectByType<MinusManager>();
         _agent = GetComponent<NavMeshAgent>();
         Invoke("Move", 5.5f);
     }
@@ -31,6 +33,11 @@ public class AiNavScript : MonoBehaviour
     private void Move()
     {
         _agent.destination = _here[0].position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _agent.acceleration = _accel[0];
     }
 
     private void FixedUpdate()

@@ -1823,6 +1823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _really: {fileID: 1666025698}
   wheel: 000000
+  engine: 0000
 --- !u!114 &221062525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6996,6 +6997,8 @@ MonoBehaviour:
   _cheaetStore: {fileID: 853243830}
   _time: {fileID: 741848332}
   _Stop: {fileID: 18878962}
+  dollar: 0
+  __engine: 0000
   _items:
   - {fileID: 5741086770043534675}
   - {fileID: 2043171567901658727}
@@ -8430,6 +8433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _really: {fileID: 0}
   wheel: 000000
+  engine: 0100
 --- !u!1 &1451709451
 GameObject:
   m_ObjectHideFlags: 0
@@ -8485,6 +8489,7 @@ MonoBehaviour:
   Cars: []
   canvas: []
   _scene: Desert
+  money: 0
 --- !u!114 &1451709454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11069,6 +11074,7 @@ MonoBehaviour:
   Cars: []
   canvas: []
   _scene: Mountain
+  money: 0
 --- !u!114 &1791748929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15629,6 +15635,7 @@ MonoBehaviour:
   - {fileID: 10620306}
   - {fileID: 787166473}
   _scene: Menu
+  money: 5000000
 --- !u!4 &3956732477392446868
 Transform:
   m_ObjectHideFlags: 0
@@ -16098,7 +16105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6710373508632056342}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19669975, y: -0.000000016870233, z: 0.0000000033844907, w: 0.9804638}
+  m_LocalRotation: {x: 0.19669975, y: 0.000000016870235, z: -0.0000000033844911, w: 0.9804638}
   m_LocalPosition: {x: 5.419983, y: -30.149984, z: 14.580261}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16634,12 +16641,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.01758586, y: 0.011461977, z: 0.044077232}
-  m_Center: {x: 0.0000004917383, y: -0.00056284154, z: -0.00045872107}
+  m_Size: {x: 1.4827693, y: 0.05422147, z: 0.83548045}
+  m_Center: {x: 0.0030495452, y: 0.02081691, z: 0.6811161}
 --- !u!4 &5247569269911424436
 Transform:
   m_ObjectHideFlags: 0
@@ -16877,6 +16884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Store
       objectReference: {fileID: 0}
+    - target: {fileID: 7488308535120569457, guid: dea4d5f962f930e4c9d4ae1975d4bb18, type: 3}
+      propertyPath: _store
+      value: 
+      objectReference: {fileID: 1470638704212822213}
     - target: {fileID: 8429795765549170739, guid: dea4d5f962f930e4c9d4ae1975d4bb18, type: 3}
       propertyPath: m_LocalPosition.x
       value: -129.6
@@ -18431,7 +18442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8823738305565497548}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19669975, y: -0.000000016870233, z: 0.0000000033844907, w: 0.9804638}
+  m_LocalRotation: {x: 0.19669975, y: 0.000000016870235, z: -0.0000000033844911, w: 0.9804638}
   m_LocalPosition: {x: 5.419983, y: -30.149984, z: 14.580261}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18676,6 +18687,7 @@ GameObject:
   - component: {fileID: 5754832127699296643}
   - component: {fileID: 240051579788081539}
   - component: {fileID: 7271247210325764993}
+  - component: {fileID: 7271247210325764994}
   m_Layer: 5
   m_Name: StoreCanvas
   m_TagString: Untagged
@@ -18831,6 +18843,21 @@ MonoBehaviour:
   _Store: {fileID: 1470638704212822213}
   _Items: {fileID: 0}
   _Stop: {fileID: 0}
+--- !u!114 &7271247210325764994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042873120214957233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c7a34c0b66983488908563a65add19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _really: {fileID: 0}
+  wheel: 000000
+  engine: 0000
 --- !u!1 &7294358007188511792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 390720176937727782, guid: 5ef6a771e7f5a0a4e988a6e7ea1a3022, type: 3}
