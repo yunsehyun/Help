@@ -21,6 +21,6 @@ public class Smanager : MonoBehaviour
         if (Sbool == "City")
         {
             _Stage[2] = true;
-        } 
+        }
     }
 }

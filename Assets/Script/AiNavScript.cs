@@ -39,7 +39,7 @@ public class AiNavScript : MonoBehaviour
     {
         _agent.acceleration = _accel[0];
     }
-
+ 
     private void FixedUpdate()
     {
         distance = Vector3.Distance(transform.position, target.position);
